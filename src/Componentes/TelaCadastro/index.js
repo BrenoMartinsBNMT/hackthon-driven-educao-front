@@ -6,31 +6,32 @@ import { ThreeDots } from 'react-loader-spinner';
 
 function TelaCadastro() {
 
-    const URL = "https://hackthon-driven-breno-app.herokuapp.com/cadastro";
+    const URL = "https://hackthon-driven-breno-app.herokuapp.com/SignUp";
 
     // const URL = "http://localhost:5000/cadastro";
 
     const loading = <ThreeDots color="#FFFFFF" />;
 
-    const [nome, setNome] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const [senha2, setSenha2] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const [cadastrar, setCadastrar] = useState("Cadastrar");
-
 
     const navigate = useNavigate();
 
     function cadastrarUsuario (event) {
         event.preventDefault();
         setCadastrar(loading);
-        console.log("fui clicado");
+        if (password !== confirmPassword) {
+            zerarInputs();
+            return alert ("As senhas estão diferentes, digite novamente"); 
+        }
         const promise = axios.post(URL,{
-            nome,
+            username,
             email,
-            senha,
-            senha2,
+            password,
         });
         promise.then(response => {
             navigate("/");
@@ -43,28 +44,28 @@ function TelaCadastro() {
 
     function zerarInputs () {
         setCadastrar("Cadastrar")
-        setNome("");
+        setUsername("");
         setEmail("");
-        setSenha("");
-        setSenha2("");
+        setPassword("");
+        setConfirmPassword("");
     }
 
     return (
         <Container>
-            <Title>MyWallet</Title>
+            <Title>MyTests</Title>
             <form onSubmit={cadastrarUsuario}>
                 <Inputs>
                     <Input type="text" placeholder="Nome" required
-                        onChange={(e) => setNome(e.target.value)} value={nome}>
+                        onChange={(e) => setUsername(e.target.value)} value={username}>
                     </Input>
                     <Input type="text" placeholder="E-mail" required
                         onChange={(e) => setEmail(e.target.value)} value={email}>
                     </Input>
                     <Input type="password" placeholder="Senha" required
-                        onChange={(e) => setSenha(e.target.value)} value={senha}>
+                        onChange={(e) => setPassword(e.target.value)} value={password}>
                     </Input>
                     <Input type="password" placeholder="Confirme a senha" required
-                        onChange={(e) => setSenha2(e.target.value)} value={senha2}>
+                        onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}>
                     </Input>
                     <SignUp type="submit">
                         {cadastrar}</SignUp>
@@ -82,7 +83,7 @@ const Title = styled.h1`
     font-family: 'Saira Stencil One', cursive; 
     font-size: 32px;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--cor-botao);
     margin-top: 95px;
     margin-bottom: 24px;
 `

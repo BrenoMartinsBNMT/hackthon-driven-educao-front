@@ -6,16 +6,14 @@ import { ThreeDots } from 'react-loader-spinner';
 
 function TelaLogin() {
 
-    const URL = "https://hackthon-driven-breno-app.herokuapp.com/"
-
+    const URL = "https://hackthon-driven-breno-app.herokuapp.com/SignIn"
 
     const loading = <ThreeDots color="#FFFFFF" />;
 
-
     const navigate = useNavigate();
 
-    const [login, setLogin] = useState("");
-    const [senha, setSenha] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const [entrar, setEntrar] = useState("Entrar");
 
@@ -23,8 +21,8 @@ function TelaLogin() {
         event.preventDefault();
         setEntrar(loading);
         const promise = axios.post(URL, {
-            login,
-            senha
+            email,
+            password
         });
         promise.then(response => {
             const {data} = response;
@@ -41,20 +39,20 @@ function TelaLogin() {
 
     function zerarInputs () {
         setEntrar("Entrar")
-        setLogin("");
-        setSenha("");
+        setEmail("");
+        setPassword("");
     }
 
     return (
         <Container>
-            <Title>MyWallet</Title>
+            <Title>MyTests</Title>
             <form onSubmit={fazerLogin}>
                 <Inputs>
                     <Input type="text" placeholder="E-mail" required
-                        onChange={(e) => setLogin(e.target.value)} value={login}>
+                        onChange={(e) => setEmail(e.target.value)} value={email}>
                     </Input>
                     <Input type="password" placeholder="Senha" required
-                        onChange={(e) => setSenha(e.target.value)} value={senha}>
+                        onChange={(e) => setPassword(e.target.value)} value={password}>
                     </Input>
                     <Login type="submit">{entrar}</Login>
                 </Inputs>
