@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+     --cor-botao: #FF4791; 
+    --cor-fundo: #FFFFFF;
+    /* --cor-botao: #4C0729; */
+    --cor-saida: #C70000;
+    --cor-entrada: #03AC00;
+    --cor-message: #868686;
+    --cor-data: #C6C6C6;
+    --cor-descrição: #000000;
+
+}
+
+body {
+    /* font-family: 'Saira Stencil One', cursive; */
+    font-family: 'Raleway', sans-serif;
+    background-color: var(--cor-fundo);
+    max-width: 375px;
+    max-height: 667px;
+}
+
+
