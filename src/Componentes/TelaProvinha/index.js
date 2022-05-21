@@ -14,7 +14,7 @@ function TelaProvinha() {
     const [selecionado, setSelecionado] = useState("");
     const [questions, setQuestions] = useState([]);
 
-    const URL = "https://hackthon-driven-breno-app.herokuapp.com/exams/cd7b4d55-a350-44ad-8c35-eb27ecc2baa6";
+    const URL = `https://hackthon-driven-breno-app.herokuapp.com/exams/${tokenLS}`;
 
     useEffect(() => {
         const promise = axios.get(URL);

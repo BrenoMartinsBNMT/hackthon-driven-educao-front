@@ -26,9 +26,8 @@ function TelaLogin() {
         });
         promise.then(response => {
             const {data} = response;
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("token", data);
             navigate("/testes");
-
         })
         promise.catch(error => {
             console.log("A requisição deu ruim");
