@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 function TelaTestes() {
 
+    const tokenLS = localStorage.getItem("token");
+
+    console.log(tokenLS);
+
     const navigate = useNavigate();
 
     return (
