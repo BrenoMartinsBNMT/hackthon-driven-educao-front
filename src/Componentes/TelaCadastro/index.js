@@ -8,8 +8,6 @@ function TelaCadastro() {
 
     const URL = "https://hackthon-driven-breno-app.herokuapp.com/SignUp";
 
-    // const URL = "http://localhost:5000/cadastro";
-
     const loading = <ThreeDots color="#FFFFFF" />;
 
     const [username, setUsername] = useState("");
