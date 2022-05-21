@@ -27,7 +27,6 @@ function TelaLogin() {
         promise.then(response => {
             const {data} = response;
             localStorage.setItem("token", data.token);
-            localStorage.setItem("usuario", data.usuario);
             navigate("/testes");
 
         })
